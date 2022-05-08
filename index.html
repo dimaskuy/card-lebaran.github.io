@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kartu Ucapan Eid Mubarak 1443H</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Kufam:wght@700&family=Poppins:wght@500;700&display=swap" rel="stylesheet" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/output.css" />
+  </head>
+  <body class="overflow-x-hidden">
+    <main class="flex flex-wrap justify-center items-center flex-col mt-32 lg:mt-0">
+      <div class="flex flex-wrap items-center justify-center lg:ml-[28rem] relative" data-aos="fade-down">
+        <div class="container w-80 md:w-full md:max-w-xl lg:max-w-4xl bg-green-50 rounded-xl shadow-2xl md:mx-2 sm:m-12">
+          <div class="h-36 md:h-64 overflow-hidden rounded-t-xl">
+            <img src="img/1.jpg" alt="Ketupat Photo by Mufid Majnun" class="w-full rounded-t md:-mt-16" />
+          </div>
+          <div class="flex justify-start px-10 -mt-14 md:-mt-24 mb-5">
+            <span class="block w-28 h-28 md:w-36 md:h-36 mx-auto">
+              <a href="https://github.com/dimaskuy" target="_blank" class="block transition-all">
+                <img src="img/2.png" alt="Dimas Ramadhan S." class="bg-green-50 object-cover mx-auto rounded-full p-1 shadow-md hover:brightness-95" />
+              </a>
+            </span>
+          </div>
+          <div class="px-6 lg:px-7 mb-8 text-center mb-12 font-poppins">
+            <h1 class="text-xl md:text-3xl font-bold text-green-800 font-kufam mt-3 sm:mt-5 selection:bg-green-800 selection:text-white">عيد مبارك</h1>
+            <h2
+              class="relative text-4xl md:text-6xl lg:text-6xl uppercase font-bold text-green-700 lg:text-white mt-3 sm:mt-5 selection:bg-green-800 selection:text-white lg:bg-green-700 lg:px-10 lg:py-2"
+              data-aos="fade-right"
+              data-aos-delay="300"
+            >
+              Happy Eid Mubarak
+            </h2>
+            <p class="text-sm md:text-md font-medium text-green-900 opacity-90 mt-3 sm:mt-5 md:px-28 leading-relaxed selection:bg-green-800 selection:text-white" data-aos="fade-up" data-aos-delay="600">
+              Taqabbalallaahu minna wa minkum. May all our worship be accepted by Allah SWT. And always given with His love and blessings 🙏✨.
+            </p>
+            <a
+              href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+              class="inline-block mt-5 sm:mt-6 bg-green-600 hover:opacity-80 text-white text-sm md:text-base px-5 py-2 rounded-3xl transition-all active:ring-4 active:ring-green-300 active:scale-95"
+              >Ambil THR sekarang!</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="box-models absolute bottom-0 -z-10"></div>
+    </main>
+
+    <script async src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.140.0/build/three.module.js",
+          "controls": "https://unpkg.com/three@0.140.0/examples/jsm/controls/OrbitControls.js",
+          "loader": "https://unpkg.com/three@0.140.0/examples/jsm/loaders/GLTFLoader.js"
+        }
+      }
+    </script>
+
+    <script type="module">
+      AOS.init({
+        once: true,
+        duration: 800,
+        offset: 0,
+      });
+
+      import * as THREE from "three";
+      import { OrbitControls } from "controls";
+      import { GLTFLoader } from "loader";
+
+      const box = document.querySelector(".box-models");
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+      const renderer = new THREE.WebGLRenderer({ alpha: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      box.appendChild(renderer.domElement);
+
+      const controls = new OrbitControls(camera, renderer.domElement);
+      controls.enabled = false;
+
+      // CUBE MODELS EXAMPLES
+      // const geometry = new THREE.BoxGeometry();
+      // // const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+      // const material = new THREE.MeshLambertMaterial({ color: 0x00ff00 });
+      // const cube = new THREE.Mesh(geometry, material);
+      // scene.add(cube);
+
+      const loader = new GLTFLoader();
+      let models;
+
+      loader.load(
+        "gltf-models/scene.gltf",
+        function (gltf) {
+          models = gltf.scene;
+          models.scale.set(0.6, 0.6, 0.6);
+          models.rotation.z = 0.3;
+          models.rotation.y = 2;
+          scene.add(models);
+        },
+        undefined,
+        function (error) {
+          console.error(error);
+        }
+      );
+
+      camera.position.z = 5;
+      camera.position.x = 5;
+      camera.position.y = -0.5;
+
+      const ambientLight = new THREE.AmbientLight(0xffffff, 1); // soft ambient light
+      scene.add(ambientLight);
+
+      const pointLight = new THREE.PointLight(0xffffff, 1, 100);
+      pointLight.position.set(50, 50, 50);
+      scene.add(pointLight);
+
+      // let light1 = new THREE.PointLight(0xffffff, 3);
+      // light1.position.set(0, 300, 500);
+      // scene.add(light1);
+
+      // let light2 = new THREE.PointLight(0xfa1032, 3);
+      // light2.position.set(500, 100, 0);
+      // scene.add(light2);
+
+      // let light3 = new THREE.PointLight(0xffffff, 3);
+      // light3.position.set(0, 100, -500);
+      // scene.add(light3);
+
+      let light4 = new THREE.PointLight(0x02fa7e, 3);
+      light4.position.set(-500, 300, 0);
+      scene.add(light4);
+
+      function animate() {
+        requestAnimationFrame(animate);
+        if (models) {
+          //   models.rotation.x += 0.01;
+          models.rotation.y += 0.01;
+          //   models.rotation.z += 0.01;
+        }
+
+        //   cube.rotation.x += 0.01;
+        //   cube.rotation.y += 0.01;
+        //   cube.rotation.z += 0.01;
+        renderer.render(scene, camera);
+      }
+      animate();
+    </script>
+  </body>
+</html>
